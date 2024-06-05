@@ -49,22 +49,6 @@ class OthelloModel():
             callbacks=[early_stopping, reduce_lr]
         )
 
-    def record_result(self, result):
-        if result == 'win':
-            self.win_loss_record['win'] += 1
-        elif result == 'lose':
-            self.win_loss_record['lose'] += 1
-
-    def print_win_loss_percentage(self):
-        total_games = self.win_loss_record['win'] + self.win_loss_record['lose']
-        if total_games > 0:
-            win_percentage = (self.win_loss_record['win'] / total_games) * 100
-            lose_percentage = (self.win_loss_record['lose'] / total_games) * 100
-            print(f"Win Percentage: {win_percentage:.2f}%")
-            print(f"Lose Percentage: {lose_percentage:.2f}%")
-        else:
-            print("No games recorded yet.")
-
     def save_model(self):
         self.model.save('othello/bots/DeepLearning/models/' + self.model_name)
 
